@@ -13,19 +13,16 @@ public:
             return 0;
         int capacity = (sum+S)/2;
 
-        vector<vector<int>> dp(nums.size()+1, vector<int>(capacity+1,0));
-        for(int i=0;i<nums.size();++i)
-            dp[i][0]=1;
+        vector<int> dp(capacity+1,0);
+        dp[0]=1;
 
         for(int i=1;i<=nums.size();++i){
-            for(int j=0;j<=capacity;++j){
+            for(int j=capacity;j>=0;--j){
                 if(j>=nums[i-1])
-                    dp[i][j]=dp[i-1][j]+dp[i-1][j-nums[i-1]];
-                else 
-                    dp[i][j]= dp[i-1][j];
+                    dp[j]=dp[j]+dp[j-nums[i-1]];
             }
         }
-        return dp[nums.size()][capacity];
+        return dp[capacity];
     }
 };
 
