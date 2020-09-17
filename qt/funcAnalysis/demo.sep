@@ -1,0 +1,30 @@
+func foo
+    arg2 = arg3 + 1 * arg1 / 2.0
+    call bar
+    ret += 1010
+end
+func bar
+    ret = arg1 + arg3.phi
+end
+func world
+    ret = "world"
+end
+func bar3
+    // call hello
+    call world
+    ret = arg1 ^ ret
+end
+func foo2
+    call bar3
+    arg1 = ret / arg1
+    call hello
+    ret = "{} {}" % (ret, arg1)
+end
+func main
+    arg1 = arg2 = arg3 = 2019
+    call foo
+    call bar
+    call foo2
+    arg1 = ret
+    call finish
+end
