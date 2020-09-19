@@ -5,33 +5,44 @@
 using namespace std;
 
 class Solution {
-    vector<vector<int>> permute(vector<int> &nums, int index)
-    {
-        vector<vector<int>> arrays;
-        if(index == nums.size()-1)
-        {
-            vector<int> array1{nums[index]};
-            arrays.push_back(array1);
-            return arrays;
+    vector<vector<int>> ans;
+
+    void permute(vector<int> &nums, int index, vector<int> &perm){
+        if(index==nums.size())
+            ans.push_back(perm);
+        for(int i=index;i<nums.size();++i){
+            swap(nums[i], nums[index]);
+            perm.push_back(nums[index]);
+            permute(nums, index+1, perm);
+            swap(nums[i], nums[index]);
+            perm.erase(perm.end()-1);
         }
-        if(index == nums.size())
-            return arrays;
-        for(int i=index;i<nums.size();++i)
-        {
-            swap(nums[index],nums[i]);
-            vector<vector<int>> array1 = permute(nums, index+1);
-            for(int i=0;i<array1.size();++i)
-            {
-                array1[i].insert(array1[i].begin(), nums[index]);
-                arrays.push_back(array1[i]);
-            }
-            swap(nums[index],nums[i]);
-        }
-        return arrays;
     }
 public:
     vector<vector<int>> permute(vector<int>& nums) {
-        return permute(nums,0);
+        vector<int> perm;
+        permute(nums, 0, perm);
+        return ans;
+    }
+};class Solution {
+    vector<vector<int>> ans;
+
+    void permute(vector<int> &nums, int index, vector<int> &perm){
+        if(index==nums.size())
+            ans.push_back(perm);
+        for(int i=index;i<nums.size();++i){
+            swap(nums[i], nums[index]);
+            perm.push_back(nums[index]);
+            permute(nums, index+1, perm);
+            swap(nums[i], nums[index]);
+            perm.erase(perm.end()-1);
+        }
+    }
+public:
+    vector<vector<int>> permute(vector<int>& nums) {
+        vector<int> perm;
+        permute(nums, 0, perm);
+        return ans;
     }
 };
 
