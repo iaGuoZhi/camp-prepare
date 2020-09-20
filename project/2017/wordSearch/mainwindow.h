@@ -13,6 +13,7 @@ class MainWindow : public QMainWindow
 
     std::vector<std::string> fileContent;
     std::string searchPatternString;
+    std::vector<std::vector<std::pair<std::string,bool>>> keyWords;
 
     QLabel *selectLabel;
     QLabel *searchLabel;
@@ -21,6 +22,8 @@ class MainWindow : public QMainWindow
     QTextEdit *patternText;
     QPushButton *searchButton;
     QTextEdit *resultText;
+
+    std::vector<std::vector<std::pair<std::string,bool>>> parseKeyWords(std::string pattern, int &index);
 
 public slots:
     void openFile();

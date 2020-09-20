@@ -36,9 +36,33 @@ MainWindow::MainWindow(QWidget *parent)
     this->connect(searchButton, &QPushButton::clicked, this, &MainWindow::searchPattern);
 }
 
+std::vector<std::vector<std::pair<std::string,bool>>> MainWindow::parseKeyWords(std::string pattern, int &index){
+    int len=pattern.size();
+    if(index>=len)
+        return std::vector<std::vector<std::pair<std::string,bool>>>{};
+
+    bool needed=true;
+    std::string token;
+    char op='&';
+    for(; index<len;index++){
+        if(pattern[index]==' ')
+            continue;
+        if(pattern[index]=='!')
+        {
+            needed=false;
+            continue;
+        }
+        if(index<len-1&&pattern[index]=='&'&&pattern[index+1]=='&'){
+
+        }
+    }
+
+}
 void MainWindow::searchPattern(){
     this->searchPatternString = this->patternText->toPlainText().toStdString();
     qDebug()<<QString::fromStdString(this->searchPatternString);
+
+
 }
 
 void MainWindow::openFile(){
