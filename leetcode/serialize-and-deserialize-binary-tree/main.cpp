@@ -66,7 +66,7 @@ public:
             for(int i=0;i<size;++i){
                 TreeNode *curNode = arrays.front();
                 arrays.pop();
-                if(tokens[index]!="null")
+                if(index<tokens.size()&&tokens[index]!="null")
                 {   
                     curNode->left=new TreeNode(stoi(tokens[index]));
                     arrays.push(curNode->left);
