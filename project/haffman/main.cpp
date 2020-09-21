@@ -107,11 +107,11 @@ public:
             cout<<it.first<< " "<<it.second.size()<<endl;
         }
 
-        
+
     }
 
     void decode(string srcFile, string outFile){
-
+        
     }
 };
 
