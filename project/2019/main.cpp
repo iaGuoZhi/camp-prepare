@@ -133,7 +133,9 @@ public:
 
     void enlarge(){
         vector<pair<long,long>> largerTable(2*hashTable.size(), pair<long,long>{-1,-1});
-
+        //system("ls");
+        long tmp;
+        cout<<sizeof(tmp);
         for(auto p: hashTable){
             if(p.first!=-1){
                 long pos = p.first%largerTable.size();
